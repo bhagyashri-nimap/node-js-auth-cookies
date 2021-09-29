@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/my_database', {
+mongoose.connect('mongodb://localhost/my_database2', {
     useNewUrlParser: true,
 
 }, (err) => {

@@ -32,13 +32,22 @@ exports.signUp = async function (data) {
                 value: false
             }
         }
-        let newUserObj = {
+        let newUserObj 
+        if(data.accessLevel=="admin"){
+            newUserObj = {
+                name: data.name,
+                email: _.toLower(data.email),
+                mobile: data.mobile,
+                password: sha256(data.password),
+                accessLevel:data.accessLevel
+            } 
+        }else{newUserObj = {
             name: data.name,
             email: _.toLower(data.email),
             mobile: data.mobile,
             password: sha256(data.password)
-        }
-
+        }}
+        
         let userObj = new userData(newUserObj)
         saveUser = await userObj.save()
         let accessTokenOutput = generateAccessToken(

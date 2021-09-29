@@ -11,6 +11,11 @@ var userSchema = Schema({
         type: String,
         required: true
     },
+    accessLevel: {
+        type: String,
+        enum: ["user","admin"],
+        default: "user"
+    },
     password: {
         type: String
     },
